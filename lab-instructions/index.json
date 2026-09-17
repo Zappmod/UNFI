@@ -64,6 +64,15 @@
       "duration": "45 min",
       "difficulty": "Intermediate",
       "icon": "⚙️"
+    },
+    {
+      "id": "sap-json-integration",
+      "title": "Lab 8: COBOL-to-SAP Real-Time Integration",
+      "description": "Replace batch file feeds to SAP with real-time JSON payloads — use Bob to generate JSON GENERATE code and zOS Connect API calls, or map at the middleware layer without changing COBOL.",
+      "file": "sap-json-integration.md",
+      "duration": "60 min",
+      "difficulty": "Advanced",
+      "icon": "🔗"
     }
   ]
 }
