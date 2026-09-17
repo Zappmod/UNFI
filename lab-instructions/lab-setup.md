@@ -255,6 +255,47 @@ ACTION: Select **Browse files → zOS Cobol → LGACDB01.cbl → select file →
 
 ---
 
+### Part 6: Generate Coding Standards
+
+#### What This Does
+
+The coding standards document captures the conventions your team actually uses — naming patterns, paragraph structure, CICS error handling, COMMAREA layouts, and copybook usage — derived directly from your own codebase. Once generated, it becomes a persistent reference that Bob consults every time it generates or refactors code, ensuring output is consistent with your existing style rather than generic best practices.
+
+Without coding standards, Bob generates correct code but it may not match your team's conventions. With coding standards in place, generated code looks like it was written by a senior developer who already knows your shop's rules.
+
+#### Actions
+
+> Ensure you are in **Z Architect** mode
+
+ACTION: Start a new chat. In the chat window, enter the following prompt:
+
+```
+/z-coding-standards-skill-builder
+```
+
+![/z-coding-standards-skill-builder prompt in Z Architect mode](images/00-26.png)
+
+ACTION: Bob will analyze the COBOL programs in your workspace to derive standards. Approve any tool requests that appear.
+
+3. Bob will work through your codebase and produce a structured coding standards document. When complete, review the output in the chat.
+
+::: {.callout-tip}
+## Tip
+Bob derives standards from what it observes across multiple programs — not from a single file. The more programs in your workspace, the more accurate and representative the standards document will be.
+:::
+
+ACTION: When Bob presents the generated standards, review them for accuracy. If anything is missing or incorrect, tell Bob in the chat (e.g. *"Add a rule that all paragraph names must be prefixed with a 4-digit section number"*) and it will update the document.
+
+#### Expected Results
+
+- ✅ Coding standards document generated from the existing codebase
+- ✅ Naming conventions captured (program IDs, paragraph names, working-storage prefixes)
+- ✅ CICS error handling patterns documented
+- ✅ COMMAREA and copybook usage conventions recorded
+- ✅ Standards saved and available for Bob to reference in future sessions
+
+---
+
 ### ✅ Lab 1 Setup Complete
 
 Bob now has everything it needs to work deeply with your codebase:
@@ -264,6 +305,7 @@ Bob now has everything it needs to work deeply with your codebase:
 | **Metadata database** (from scan) | Answers questions about the whole application, not just open files |
 | **Agent.md** | Provides project context at the start of every session |
 | **Data Dictionary** | Translates field names into business language |
+| **Coding Standards** | Ensures generated and refactored code matches your team's conventions |
 
 ::: {.callout-tip}
 ## Start a New Chat
