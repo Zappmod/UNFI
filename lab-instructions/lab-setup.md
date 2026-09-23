@@ -46,13 +46,13 @@ This is where your code lives. When Bob generates documentation, architecture di
 **Right panel — Chat Window**
 This is where you interact with Bob. Type prompts, review responses, and approve or decline tool requests. When Bob wants to read a file or run an analysis tool, you'll see a tool request card appear in the chat.
 
-![The VS Code layout with Bob](images/00-1.png)
+![The VS Code layout with Bob](images/00-01.png)
 
 #### Ensure You Have Access to Bob Premium for Z
 
 ACTION: Under bob settings, locate the general settings.
 
-![Bob general settings](images/00-2.png)
+![Bob general settings](images/00-02.png)
 
 ACTION: Select the team's name from the drop down, for instance, in the screenshot **techzone-bobathon**. Please ask your instructor for the team's name for this bobathon.
 
@@ -62,7 +62,6 @@ ACTION: Select the team's name from the drop down, for instance, in the screensh
 
 ACTION: In Bob and in the Explorer section select **Open Folder**.
 
-::: {.callout-tip}
 ## Tip
 You can also use the keyboard shortcut **Ctrl + K, Ctrl + O** to open a folder or select **File → Open Folder** from the menu bar.
 :::
@@ -73,7 +72,7 @@ ACTION: Please select the Sample Code Folder you downloaded and click the **Open
 
 ![Select and open the Sample Code folder](images/00-6.png)
 
-Once complete you should see the sample code in the Explorer section of VS Code.
+Once complete you should see the sample code in the Explorer section of the Bob IDE.
 
 ![Sample code loaded in Explorer](images/00-7.png)
 
@@ -86,7 +85,7 @@ The **mode selector** is at the bottom of the chat window. Click it to see avail
 | **Z Architect** | Analysis, documentation, impact analysis, architecture diagrams, data dictionaries, Agent.md setup |
 | **Z Code** | Code changes, service extraction, code generation |
 
-::: {.callout-warning}
+
 ## Mode Matters
 Bob uses different agents depending on the active mode. If a prompt isn't getting the result you expect, check that you are in the right mode first.
 :::
@@ -101,7 +100,7 @@ When Bob needs to take an action, a tool request card appears in the chat:
 - Click **Reject** to stop that specific action
 - You can also enable **Auto Approve** (**Permissions** dropdown near the mode selector) to approve all requests automatically — useful for long-running workflows
 
-::: {.callout-tip}
+
 ## Tip
 You may be asked to approve several requests in sequence for a single prompt. This is normal — each approval allows Bob to complete one step before moving to the next.
 :::
@@ -111,8 +110,6 @@ You may be asked to approve several requests in sequence for a single prompt. Th
 #### Starting a New Chat
 
 Click the **+** button at the top of the chat panel to start a fresh conversation. Your chat history is preserved — you can browse previous sessions using the history icon. A fresh chat is recommended at the start of each new use case to avoid context from a prior session carrying over.
-
-![New chat button at the top of the chat panel](images/00-10.png)
 
 #### Tasks
 
@@ -140,18 +137,18 @@ The workspace scan builds a local metadata database that Bob uses to understand 
 Scan the local workspace
 ```
 
-![Scan the local workspace prompt in Z Architect mode](images/00-13.png)
+![Scan the local workspace prompt in Z Architect mode](images/00-12.png)
 
 2. When Bob needs to take an action, a tool request card appears in the chat (example below):
 
-![Tool request card during workspace scan](images/00-14.png)
+![Tool request card during workspace scan](images/00-13.png)
 
 3. Additional approval requests may follow — click **Approve** for each or you may turn your auto approvals on in **Permissions**.
 
-::: {.callout-warning}
-## Do Not Close VS Code During the Scan
+
+## Do Not Close Bob IDE During the Scan
 The scan must complete fully before Bob can run analysis queries against it.
-:::
+
 
 4. The scan typically takes 2–5 minutes depending on workspace size. When complete, Bob will confirm the scan finished and show a summary. You will note the location of your database in the `.bobz` folder under `local-settings.json`. The local database is now available for architecture analysis tasks.
 
@@ -189,7 +186,7 @@ Bob reads Agent.md automatically at the start of every session — giving Bob pr
 
 3. When complete, an `AGENTS.md` file will appear in the file explorer. Click **Preview** to review it.
 
-::: {.callout-tip}
+
 ## Tip
 If the AGENTS.md doesn't automatically open, locate it on the left explorer panel. You can preview by right clicking the file and selecting **Open Preview**, or you can select the file then in the top of your viewer select the icon that allows you to preview.
 :::
@@ -220,33 +217,29 @@ A workflow will be used for this task. Workflows guide you through complex tasks
 
 1. Select the **Workflows** icon.
 
-![Workflows icon in the Bob interface](images/00-19.png)
-
 2. Select the workflow titled **Generate Data Dictionary**. You can use the dropdown to review what the workflow is used for.
 
-![Generate Data Dictionary workflow selection](images/00-20.png)
+![Generate Data Dictionary workflow selection](images/00-19.png)
 
 3. Bob will have you select a program. You can input a path or click **Browse Files** to select a code file. Then click **Continue with selection**.
 
-![Program file selection screen](images/00-21.png)
+![Program file selection screen](images/00-20.png)
 
-ACTION: Select **Browse files → zOS Cobol → LGACDB01.cbl → select file → Continue with selection**.
+ACTION: Select **Browse files → Use 1 & 4 → MMP193.cbl → select file → Continue with selection**.
 
-![Browse files to select LGACDB01.cbl](images/00-22.png)
+![Browse files to select LGACDB01.cbl](images/00-21.png)
 
 4. Bob may ask to use various skills to create the data dictionary. If auto approve is off, please select **Approve**. If prompted for various other approvals, please select approve each time unless noted.
-
-![Skill approval request during Data Dictionary generation](images/00-23.png)
 
 5. You will then be asked to review or edit entries:
 
 - This is optional but valuable — you can correct interpretations, add business context, or clarify variable meanings at this point
 
-![Review and edit Data Dictionary entries](images/00-24.png)
+![Review and edit Data Dictionary entries](images/00-22.png)
 
 6. When complete, a `DD.json` file will appear in the file explorer under the `bobz` folder. Click to review it.
 
-![DD.json file in the bobz folder](images/00-25.png)
+![DD.json file in the bobz folder](images/00-23.png)
 
 #### Expected Results
 
@@ -265,7 +258,7 @@ Without coding standards, Bob generates correct code but it may not match your t
 
 #### Actions
 
-> Ensure you are in **Z Architect** mode
+> Ensure you are in **Z Code** mode
 
 ACTION: Start a new chat. In the chat window, enter the following prompt:
 
@@ -279,10 +272,11 @@ ACTION: Bob will analyze the COBOL programs in your workspace to derive standard
 
 3. Bob will work through your codebase and produce a structured coding standards document. When complete, review the output in the chat.
 
-::: {.callout-tip}
-## Tip
+![/z-coding-standards-skill-builder prompt in Z Architect mode](images/00-27.png)
+
+## Tip00
 Bob derives standards from what it observes across multiple programs — not from a single file. The more programs in your workspace, the more accurate and representative the standards document will be.
-:::
+
 
 ACTION: When Bob presents the generated standards, review them for accuracy. If anything is missing or incorrect, tell Bob in the chat (e.g. *"Add a rule that all paragraph names must be prefixed with a 4-digit section number"*) and it will update the document.
 
