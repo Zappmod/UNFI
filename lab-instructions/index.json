@@ -1,78 +1,60 @@
 {
-  "title": "Bob Premium for Z",
-  "subtitle": "Bobathon Guide",
+  "title": "IBM Bob Premium for Z",
+  "subtitle": "UNFI Bobathon Guide",
   "labs": [
     {
       "id": "lab-setup",
       "title": "Lab 1: Getting Started",
-      "description": "Set up Bob, scan your workspace, initialize Agent.md, and generate a Data Dictionary.",
+      "description": "Set up Bob, scan your workspace, initialize Agent.md, generate a Data Dictionary, and derive coding standards.",
       "file": "lab-setup.md",
       "duration": "20 min",
       "difficulty": "Beginner",
       "icon": "🚀"
     },
     {
-      "id": "technical-design",
-      "title": "Lab 2: Technical Design Document",
-      "description": "Generate a comprehensive technical design document from your COBOL codebase with Mermaid diagrams.",
-      "file": "technical-design.md",
-      "duration": "10–15 min",
-      "difficulty": "Beginner",
-      "icon": "📐"
+      "id": "cobol-to-java",
+      "title": "Lab 2: Convert COBOL+DB2 to Java",
+      "description": "Use IBM Bob to automatically analyze, translate, and modernize COBOL programs and DB2 stored procedures to efficient, maintainable Java code.",
+      "file": "cobol-to-java.md",
+      "duration": "45 min",
+      "difficulty": "Intermediate",
+      "icon": "☕"
     },
     {
-      "id": "understand",
-      "title": "Lab 3: Application Discovery & Understanding",
-      "description": "Explore call graphs, DB2 access graphs, flow charts, complexity reports, and variable data flow across the GENAPP application.",
-      "file": "understand.md",
-      "duration": "30 min",
-      "difficulty": "Beginner",
+      "id": "progeni-conversion",
+      "title": "Lab 3: Convert Progeni to Standard COBOL",
+      "description": "Modernize reporting and screen assets by converting Progeni Report writer programs to standard COBOL and converting CICS Maps to SDF2 compatible format.",
+      "file": "progeni-conversion.md",
+      "duration": "45 min",
+      "difficulty": "Intermediate",
+      "icon": "🔄"
+    },
+    {
+      "id": "broadcom-exit",
+      "title": "Lab 4: Broadcom Exit & Migration Wave Planning",
+      "description": "Identify obsolete modules and dependencies, group COBOL programs and ADSO screens by business function, and organize in logical migration waves.",
+      "file": "broadcom-exit.md",
+      "duration": "45 min",
+      "difficulty": "Intermediate",
       "icon": "🗺️"
     },
     {
-      "id": "impact-analysis",
-      "title": "Lab 4: Impact Analysis",
-      "description": "Analyze the ripple effects of a field change across your entire mainframe application landscape.",
-      "file": "impact-analysis.md",
-      "duration": "30 min",
-      "difficulty": "Beginner",
+      "id": "cpu-optimization",
+      "title": "Lab 5: CPU Optimization",
+      "description": "Use IBM Bob to analyze code, SQL, and DB2 access patterns to identify bottlenecks and recommend optimizations to reduce CPU consumption and improve system performance.",
+      "file": "cpu-optimization.md",
+      "duration": "60 min",
+      "difficulty": "Intermediate",
+      "icon": "⚡"
+    },
+    {
+      "id": "cobol-data-analysis",
+      "title": "Lab 6: COBOL Code & Data Analysis",
+      "description": "Perform in-depth analysis of COBOL code and associated data structures to understand impact, dependencies, data flows, and business logic.",
+      "file": "cobol-data-analysis.md",
+      "duration": "60 min",
+      "difficulty": "Intermediate",
       "icon": "🔍"
-    },
-    {
-      "id": "dead-code-technical-debt",
-      "title": "Lab 5: Dead Code & Technical Debt",
-      "description": "Surface unreachable paragraphs, unused variables, and orphaned copybooks, then rank every program by a weighted technical debt scorecard.",
-      "file": "dead-code-technical-debt.md",
-      "duration": "60 min",
-      "difficulty": "Intermediate",
-      "icon": "🧹"
-    },
-    {
-      "id": "refactoring",
-      "title": "Lab 6: Refactoring & Service Extraction",
-      "description": "Identify business rules in monolithic COBOL programs, check dependencies, and extract business services for modernization.",
-      "file": "refactoring.md",
-      "duration": "60 min",
-      "difficulty": "Intermediate",
-      "icon": "🔧"
-    },
-    {
-      "id": "spec-driven-code-gen",
-      "title": "Lab 7: Spec-Driven Code Generation",
-      "description": "Use a program specification to generate a complete CICS COBOL program and verify it against requirements.",
-      "file": "spec-driven-code-gen.md",
-      "duration": "45 min",
-      "difficulty": "Intermediate",
-      "icon": "⚙️"
-    },
-    {
-      "id": "sap-json-integration",
-      "title": "Lab 8: COBOL-to-SAP Real-Time Integration",
-      "description": "Replace batch file feeds to SAP with real-time JSON payloads — use Bob to generate JSON GENERATE code and zOS Connect API calls, or map at the middleware layer without changing COBOL.",
-      "file": "sap-json-integration.md",
-      "duration": "60 min",
-      "difficulty": "Advanced",
-      "icon": "🔗"
     }
   ]
 }
