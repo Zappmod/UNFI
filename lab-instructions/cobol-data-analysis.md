@@ -25,6 +25,8 @@ By the end of this lab you will be able to:
 - Perform impact analysis before making a field or copybook change
 - Identify complexity hotspots and technical debt across the codebase
 - Use Bob to explain business logic embedded in COBOL programs in plain English
+- Generate structured program documentation using the Program Documentation workflow
+- Extract and document business rules using the Extract Business Rules workflow
 
 ---
 
@@ -150,13 +152,7 @@ Use Bob to explain what programs actually do in plain English — translating de
 Explain MMP193.cbl in plain English. What does it do, what business process does it support, what data does it read and write, and what are the key decision points in the logic?
 ```
 
-**2. Extract business rules**
-
-```
-Identify all business rules embedded in KMS150.cbl — conditions, validations, calculations, and decision logic. Present them as a numbered list of plain-English rules, each with the paragraph name and line number where it appears in the code.
-```
-
-**3. Summarize a program family**
+**2. Summarize a program family**
 
 ```
 The KMS* programs appear to be related. Analyze all KMS programs in the workspace and explain what business function this program family supports, how they relate to each other, and what data they share.
@@ -164,7 +160,70 @@ The KMS* programs appear to be related. Analyze all KMS programs in the workspac
 
 ---
 
-### Exercise 5: Complexity & Technical Debt
+### Exercise 5: Generate Program Documentation (Workflow)
+
+The **Generate Program Documentation** workflow produces structured, comprehensive documentation for a COBOL program — covering program logic, business rules, data usage, and call relationships. This is more thorough than a conversational explanation because the workflow guides Bob through a consistent documentation structure every time.
+
+> Ensure you are in **Z Architect** mode
+
+#### Actions
+
+1. Select the **Workflows** icon.
+
+2. Select the workflow titled **Generate program documentation**. You can use the dropdown to review what the workflow is used for.
+
+3. Bob will ask you to select a program. Click **Browse Files** to select a COBOL source file, then click **Continue with selection**.
+
+   **ACTION:** Select **Browse Files → Use Case 1 & 4 → MMP193.cbl → select file → Continue with selection**.
+
+4. Approve any tool requests that appear as Bob reads the source file, queries the metadata database, and assembles the documentation.
+
+5. When complete, a documentation file will be written to your workspace. Open it and review the generated content.
+
+> **Tip:** Try running the workflow again on a different program — for example `KMS150.cbl` — to compare the depth of documentation produced for programs of different complexity.
+
+#### Expected Results
+
+- ✅ Structured program documentation generated covering logic, business rules, and data flow
+- ✅ Call relationships and copybook dependencies included
+- ✅ Documentation file written to the workspace and visible in the Explorer panel
+
+---
+
+### Exercise 6: Extract Business Rules (Workflow)
+
+The **Extract Business Rules** workflow goes beyond a conversational summary. It systematically scans the program, identifies distinct business areas, and produces structured documentation for each business rule — including the conditions, validations, calculations, and decision logic it enforces.
+
+> Ensure you are in **Z Architect** mode
+
+#### Actions
+
+1. Select the **Workflows** icon.
+
+2. Select the workflow titled **Extract business rules**. You can use the dropdown to review what the workflow is used for.
+
+3. Bob will ask you to select a program. Click **Browse Files** to select a COBOL source file, then click **Continue with selection**.
+
+   **ACTION:** Select **Browse Files → Use Case 1 & 4 → KMS150.cbl → select file → Continue with selection**.
+
+4. Approve any tool requests that appear as Bob analyzes the program logic.
+
+5. When complete, review the extracted business rules. Each rule will include the business area it belongs to, a plain-English description, and a reference to the relevant paragraph or section in the source code.
+
+> **Tip:** After reviewing the output, try a follow-up prompt in the same chat:
+> ```
+> Are there any business rules in KMS150.cbl that appear to be duplicated or overlapping with rules in other KMS programs?
+> ```
+
+#### Expected Results
+
+- ✅ Business areas identified and grouped
+- ✅ Each business rule documented with plain-English description and source location
+- ✅ Conditions, validations, and decision logic captured in structured format
+
+---
+
+### Exercise 7: Complexity & Technical Debt
 
 Cyclomatic complexity measures the number of independent paths through a program — the higher the score, the harder it is to test, maintain, and modernize.
 
@@ -196,6 +255,8 @@ Based on complexity, dead code, and DB2 access patterns, which 3 programs in the
 - **Call graphs** and **data flow** analysis are the two most powerful tools for understanding an unfamiliar codebase quickly
 - **Impact analysis before any change** is a best practice — it takes seconds with Bob and prevents hours of debugging downstream
 - **Business logic explanation** prompts are valuable not just for developers but for business analysts and architects who need to understand what the code does without reading COBOL
+- The **Generate Program Documentation** workflow produces consistent, structured documentation every time — more reliable than ad-hoc conversational prompts
+- The **Extract Business Rules** workflow surfaces the decision logic embedded in COBOL in a format that business analysts and architects can act on directly
 - Every prompt in this lab is a starting point — replace program names, field names, and copybook names with the ones relevant to your investigation
 
 ::: {.callout-tip}
