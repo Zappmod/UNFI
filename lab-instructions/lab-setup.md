@@ -274,7 +274,7 @@ ACTION: Bob will analyze the COBOL programs in your workspace to derive standard
 
 ![/z-coding-standards-skill-builder prompt in Z Architect mode](images/00-27.png)
 
-## Tip00
+## Tip
 Bob derives standards from what it observes across multiple programs — not from a single file. The more programs in your workspace, the more accurate and representative the standards document will be.
 
 
@@ -301,7 +301,6 @@ Bob now has everything it needs to work deeply with your codebase:
 | **Data Dictionary** | Translates field names into business language |
 | **Coding Standards** | Ensures generated and refactored code matches your team's conventions |
 
-::: {.callout-tip}
 ## Start a New Chat
 Please select the **+** sign at the top of the chat window to start a new session before moving to the next lab.
-:::
+

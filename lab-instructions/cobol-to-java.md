@@ -36,16 +36,17 @@ Before converting, use Bob to explain what the program does. This gives you a ba
 
 > Ensure you are in **Z Architect** mode
 
-1. In the chat, enter the following prompt — replacing the program name with the one your instructor has assigned:
+1. In the chat, please select the workflow icon. Please select the explain code workflow and click start. 
 
-```
-Explain MMP193.cbl in plain English. Describe what the program does, what DB2 tables it accesses, what the key business rules are, and how data flows through the paragraphs. Include a summary table of every DB2 operation (SELECT, INSERT, UPDATE, DELETE) with the table name and purpose.
-```
+![Initial Prompt](images/01-00.png)
 
-2. Approve any tool requests that appear. Bob will scan the program, read the copybooks it depends on, and query the metadata database.
+2. Enter the following program *KMP302.cbl*
+![Initial Prompt](images/01-01.png)
+2. Please select developer. Approve any tool requests that appear. Bob will scan the program, read the copybooks it depends on, and query the metadata database.
 
+![Initial Prompt](images/01-02.png)
 3. Review the explanation carefully — this is your reference for verifying the Java output in Exercise 3.
-
+![Initial Prompt](images/01-03.png)
 #### Expected Results
 
 - ✅ Plain-English description of the program's purpose
@@ -66,18 +67,19 @@ Point Bob at the COBOL program and ask it to produce the Java translation.
 1. In the chat, enter the following prompt:
 
 ```
-Convert MMP193.cbl to Java. Generate a complete Java class that:
+Convert KMP302.cbl to Java. Generate a complete Java class that:
 - Preserves all business rules and processing logic from the COBOL program
 - Replaces EXEC SQL statements with JDBC calls using the same table names and column mappings
 - Maps each major COBOL paragraph to a well-named Java method
 - Uses clear variable names derived from the COBOL field names
 - Includes comments that reference the original COBOL paragraph name for each method
-Save the output as MMP193.java.
+Save the output as KMP302.java.
 ```
+![Initial Prompt](images/01-04.png)
 
 2. Approve tool requests as they appear. Bob will read the source program, resolve copybook dependencies, and generate the Java file.
 
-3. When complete, open `MMP193.java` in the editor and review the generated code.
+3. When complete, open `KMP302.java` in the editor and review the generated code.
 
 #### Expected Results
 
@@ -86,7 +88,7 @@ Save the output as MMP193.java.
 - ✅ DB2 `EXEC SQL` statements replaced with JDBC equivalents
 - ✅ Copybook field names carried through as Java field/variable names
 - ✅ Business rules intact and readable
-
+![Initial Prompt](images/01-05.png)
 ---
 
 ### Exercise 3: Verify the Conversion
@@ -100,15 +102,15 @@ Systematically check the generated Java against the original COBOL to confirm no
 1. In the chat, enter the following prompt:
 
 ```
-Compare MMP193.java against MMP193.cbl. For each major paragraph in the COBOL program, confirm whether the equivalent logic is present in the Java class. List any business rules, DB2 operations, or error-handling paths that are missing or incomplete in the Java output.
+Compare KMP302.java against KMP302.cbl. For each major paragraph in the COBOL program, confirm whether the equivalent logic is present in the Java class. List any business rules, DB2 operations, or error-handling paths that are missing or incomplete in the Java output.
 ```
-
+![Initial Prompt](images/01-06.png)
 2. Review Bob's comparison report in the chat. If gaps are identified, ask Bob to fix them:
 
 ```
-Fix the gaps identified in the comparison. Update MMP193.java to include the missing logic.
+Fix the gaps identified in the comparison. Update KMP302.cbl to include the missing logic.
 ```
-
+![Initial Prompt](images/01-07.png)
 #### Expected Results
 
 - ✅ Comparison report produced paragraph-by-paragraph
@@ -125,7 +127,6 @@ Fix the gaps identified in the comparison. Update MMP193.java to include the mis
 - The paragraph-to-method mapping keeps the Java output traceable back to the original COBOL
 - The verify step is essential — always review generated output against the source before accepting it
 
-::: {.callout-tip}
 ## Start a New Chat
 Please select the **+** sign at the top of the chat window to start a new session before moving to the next lab.
-:::
+
