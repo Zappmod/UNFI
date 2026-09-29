@@ -47,6 +47,7 @@ Analyze the entire workspace and produce a program inventory. For each program, 
 - Copybooks it depends on
 Present the results as a table sorted by business area.
 ```
+![Set Up](images/03-00.png)
 
 2. Approve tool requests. Bob will query the metadata database built during Lab 1 setup.
 
@@ -78,7 +79,7 @@ Review the program inventory and identify:
 3. Programs that duplicate functionality — groups of programs that perform the same business operation
 Present findings as three separate lists with a brief rationale for each entry.
 ```
-
+![Set Up](images/03-01.png)
 2. Review the three lists. Flag any programs Bob has incorrectly identified as obsolete and correct it in the chat.
 
 #### Expected Results
@@ -109,6 +110,7 @@ For each group show:
 - Entry-point programs (those not called by anything else in the group)
 Present as a structured list with one section per group.
 ```
+![Set Up](images/03-02.png)
 
 2. Review the groupings. If a program is in the wrong group, tell Bob in the chat and it will adjust.
 
@@ -140,6 +142,7 @@ Present the result as a wave plan table:
 Wave | Group Name | Programs | Dependencies on Prior Waves | Risk Level (Low / Medium / High)
 Add a brief narrative after the table explaining the sequencing rationale.
 ```
+![Set Up](images/03-03.png)
 
 2. Review the wave plan. Ask Bob to adjust wave sizing or risk assessments as needed.
 
@@ -172,6 +175,7 @@ Generate a formal Migration Wave Plan document for the Broadcom exit. Include:
 5. Risk & Dependency Notes — circular dependencies, high-risk programs, and recommended mitigations
 Save the document as MIGRATION-WAVE-PLAN.md.
 ```
+![Set Up](images/03-04.png)
 
 2. Approve tool requests and wait for the document to be generated.
 
@@ -193,7 +197,6 @@ Save the document as MIGRATION-WAVE-PLAN.md.
 - The migration wave plan is a living document — ask Bob to update it as programs are retired or dependencies change
 - Identifying obsolete programs early reduces the total migration scope and risk before the first wave begins
 
-::: {.callout-tip}
 ## Start a New Chat
 Please select the **+** sign at the top of the chat window to start a new session before moving to the next lab.
 :::
