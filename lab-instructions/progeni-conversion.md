@@ -191,6 +191,7 @@ Check the converted COBOL program against the original Progeni specification.
 ```
 Compare MAP317-STD.cbl against MAP317.spec. For each requirement in the spec, confirm whether the standard COBOL program fulfills it. List any missing validations, incorrect field mappings, or business rules that were not carried over.
 ```
+![Set Up](images/02-06.png)
 
 2. If gaps are found, ask Bob to correct them:
 
