@@ -39,17 +39,15 @@ Before converting, use Bob to explain what the Progeni program and map do.
 1. In the chat, enter the following prompt:
 
 ```
-I have a Progeni report writer program. Analyze the following files together and explain in plain English what this program does, what screens or reports it produces, what data it reads and writes, and what the key business rules are:
-- MAP317.cbl
-- MAP317.mac
-- MAP317.spec
-Summarize the screen layout and any field-level validation rules you can identify.
+Analyze the following files together and explain in plain English what this program does, what screens or reports it produces, what data it reads and writes, and what the key business rules are: MAP317.cbl, MAP317.mac, MAP317.spec. Summarize the screen layout and any field-level validation rules you can identify. Save the full analysis to /docs/MAP317-analysis.md.
 ```
+![Set Up](images/02-00.png)
 
 2. Approve any tool requests. Bob will read all three files and cross-reference them to produce a unified explanation.
 
 3. Review the explanation — this is your reference for verifying the converted output.
 
+![Set Up](images/02-01.png)
 #### Expected Results
 
 - ✅ Plain-English description of the program's purpose and screen/report layout
@@ -68,20 +66,74 @@ Generate a standard COBOL equivalent of the Progeni program.
 > Switch to **Z Code** mode
 
 1. In the chat, enter the following prompt:
-
+##### Tip: We added some specifics to the prompt to help with generaton time during the lab!
 ```
-Convert MAP317 from Progeni report writer format to standard COBOL. Using MAP317.cbl, MAP317.mac, and MAP317.spec as source:
-- Generate a standard COBOL program MAP317-STD.cbl that reproduces the same business logic and report output
-- Replace all Progeni macro calls with equivalent standard COBOL statements
-- Preserve all field names, validation rules, and processing logic from the spec
-- Structure the output using standard IDENTIFICATION, ENVIRONMENT, DATA, and PROCEDURE divisions
-- Add comments identifying which Progeni macro or spec section each section was derived from
+Convert MAP317 from Progeni report writer format to standard COBOL.
+
+Using MAP317.cbl, MAP317.mac, and MAP317.spec as source:
+
+Generate a standard COBOL program MAP317-STD.cbl that reproduces the same business logic and report output
+Replace all Progeni macro calls with equivalent standard COBOL statements
+Preserve all field names, validation rules, and processing logic from the spec
+Structure the output using standard IDENTIFICATION, ENVIRONMENT, DATA, and PROCEDURE divisions
+Add comments identifying which Progeni macro or spec section each section was derived from
+PROGENI FORMAT TRANSLATION RULES — apply these before writing any PIC clause derived from a .mac report field definition:
+
+Picture symbol substitution
+Progeni uses format codes inside picture strings that are not valid standard COBOL symbols. Replace every occurrence:
+
+ZD → Z (e.g. ZD9 → Z9, Z,ZZZ,ZD9.99- → Z,ZZZ,Z9.99-)
+D → Z (same rule; trailing D before a digit means "suppress zero here and place minus adjacent")
+After substitution, verify the resulting PIC string contains only the characters: 9 A B E G N P S V X Z . , + - / * $ 0 and parenthesised repeat counts. Any other character is a Progeni format code and must be substituted or removed.
+
+PRINTDETAIL macro → WRITE FROM
+Each PRINTDETAIL <report-name> call becomes:
+
+MOVE <ws-line-buffer> TO <fd-record>
+WRITE <fd-record> AFTER ADVANCING 1 LINE
+
+Open the report file with OPEN OUTPUT before the first write. Manage a line counter and issue WRITE ... AFTER ADVANCING PAGE when the page limit is reached, then reprint the column headers.
+
+PROCESS loop → PERFORM UNTIL
+Each PROCESS <file>, WHEN <condition> block becomes a READ <file> AT END SET <eof-flag> TO TRUE / NOT AT END loop driven by PERFORM UNTIL <eof-flag>. The WHEN condition becomes an IF/EVALUATE guard inside the loop body; records that do not match the condition are skipped with CONTINUE and the loop reads the next record.
+
+COLUMN-72 RULE — apply to every source line written:
+
+COBOL column 72 is a hard right margin. Any token that starts or continues past column 72 is silently truncated by the compiler with no error. Before writing each line:
+
+Count the last meaningful character against the ruler below
+If it lands past column 72, split the line at a natural clause boundary and continue in Area B (columns 12–72) of the next line
+Pay special attention to REDEFINES target names, VALUE literals, and EXEC SQL host variable lists — these are the most common overflow points
+         1         2         3         4         5         6         7
+1234567890123456789012345678901234567890123456789012345678901234567890123456789
+                                                                       ^col 72
+
+TIMEOUT-SAFE WRITING STRATEGY — mandatory:
+
+The PROCEDURE DIVISION is large (~25 paragraphs). Write it in small named chunks using one insert_content call per chunk. Never attempt to write more than ~80 lines in a single call. Use this chunk order:
+
+PROCEDURE DIVISION header + MAINLINE + EOJ + CLOSE-DOWN
+File open / read / close utility paragraphs
+ACCUM-SALES-CUST-CHARGE (MAFD07 PROCESS loop)
+INITIAL-PARA — initialisation logic
+DB2 cursor paragraphs — DECLARE / OPEN / FETCH / CLOSE for all 3 cursors
+PROCESS-MAFDAG-LOOP — MAFDAG PROCESS loop with header cursor inner loop
+GET-MISMATCHES + mismatch cursor open/close
+CREATE-PROOF-OF-BAL-REPORT + GET-PROM-REG-AMTS
+CHECK-COLUMN-BALANCE + CHECK-COLUMN-ZEROES
+PRINT-PRODUCT-DETAIL + INIT-CTRL-TOTALS
+Report write paragraphs — WRITE-MAFP3G-LINE, WRITE-MAFP22-LINE, header printing
+After all chunks are written, run get_diagnostics and fix every error before declaring the task complete.
+
 Save the output as MAP317-STD.cbl.
 ```
+![Set Up](images/02-02.png)
 
 2. Approve tool requests as Bob works through the source assets and generates the output.
 
 3. When complete, open `MAP317-STD.cbl` and review the generated program.
+
+![Set Up](images/02-03.png)
 
 #### Expected Results
 
@@ -111,10 +163,13 @@ Analyze MSM990.bms and MSP990.mac together. Convert the BMS map definition to SD
 - Note any BMS attributes that have no direct SDF2 equivalent and suggest the closest alternative
 Save the SDF2 panel definition as MSM990-SDF2.pnl.
 ```
+![Set Up](images/02-04.png)
 
 2. Approve tool requests and review the generated panel definition.
 
 #### Expected Results
+
+![Set Up](images/02-05.png)
 
 - ✅ SDF2 panel definition generated from the BMS source
 - ✅ Field names preserved for COBOL program compatibility
@@ -158,7 +213,6 @@ Fix the gaps identified in the comparison and update MAP317-STD.cbl.
 - Preserving field names during conversion ensures the converted COBOL program works with existing calling programs without interface changes
 - The BMS → SDF2 conversion retains screen layout fidelity while enabling the map to be maintained with standard IBM tooling
 
-::: {.callout-tip}
+
 ## Start a New Chat
 Please select the **+** sign at the top of the chat window to start a new session before moving to the next lab.
-:::
