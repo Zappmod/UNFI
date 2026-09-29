@@ -50,11 +50,15 @@ Call graphs show which programs invoke which other programs. They reveal the str
 
 > Ensure you are in **Z Architect** mode
 
+![Alt text describing the image](./images/05-01.png)
+
 **1. Full application call graph**
 
 ```
 Generate a call graph for the entire workspace showing which programs call which other programs. Identify the top-level entry points and the most-called utility programs.
 ```
+
+![Alt text describing the image](./images/05-03.png)
 
 **2. Call chain from a specific program**
 
@@ -62,17 +66,23 @@ Generate a call graph for the entire workspace showing which programs call which
 Show me the full call chain starting from MMP193.cbl — every program it directly or transitively calls, down to the deepest dependency.
 ```
 
+![Alt text describing the image](./images/05-04.png)
+
 **3. Reverse call graph — who calls this program?**
 
 ```
 Which programs in the workspace call KMS150.cbl? Show me the reverse call graph with a summary table.
 ```
 
+![Alt text describing the image](./images/05-05.png)
+
 **4. Entry point discovery**
 
 ```
 Which programs are never called by any other program in the workspace? Show them as entry points with their inferred business function.
 ```
+
+![Alt text describing the image](./images/05-06.png)
 
 ---
 
@@ -82,11 +92,15 @@ Data flow analysis traces how a specific field moves through the application —
 
 > Ensure you are in **Z Architect** mode
 
+![Alt text describing the image](./images/05-01.png)
+
 **1. Cross-program field trace**
 
 ```
 Trace the data flow of a key promotion field across all programs — where is it written and where is it read? Pick the most widely used promotion-related field from the copybooks and trace it.
 ```
+
+![Alt text describing the image](./images/05-07.png)
 
 **2. Variable flow within a program**
 
@@ -94,17 +108,23 @@ Trace the data flow of a key promotion field across all programs — where is it
 Show me a variable data flow graph for the main working-storage fields inside MMP193.cbl — which paragraphs write them and which paragraphs read them?
 ```
 
+![Alt text describing the image](./images/05-08.png)
+
 **3. Inter-paragraph data flow**
 
 ```
 Which variables in MMP269.cbl are written in one paragraph and read in another? Show the data flow between paragraphs as a diagram.
 ```
 
+![Alt text describing the image](./images/05-09.png)
+
 **4. Return code trace**
 
 ```
 Identify all return code fields used across the workspace. For each one, trace which programs set it and which programs check it.
 ```
+
+![Alt text describing the image](./images/05-10.png)
 
 ---
 
@@ -114,11 +134,15 @@ Impact analysis answers "if I change this, what else breaks?" before you touch a
 
 > Ensure you are in **Z Architect** mode
 
+![Alt text describing the image](./images/05-01.png)
+
 **1. Copybook change impact**
 
 ```
 Show me all programs that would be affected if I change MMLW17.cpy. Include direct users and any programs that use those programs transitively.
 ```
+
+![Alt text describing the image](./images/05-11.png)
 
 **2. Most-included copybook**
 
@@ -126,11 +150,15 @@ Show me all programs that would be affected if I change MMLW17.cpy. Include dire
 Which copybook in the workspace is included by the most programs? Draw a dependency graph ranked by inclusion count.
 ```
 
+![Alt text describing the image](./images/05-12.png)
+
 **3. Field size change impact**
 
 ```
 What would be the impact of increasing the size of a key item identifier field (e.g. an item number or vendor number) by 2 characters? Which programs and copybooks would need to change?
 ```
+
+![Alt text describing the image](./images/05-13.png)
 
 **4. Full include tree for a program**
 
@@ -138,25 +166,8 @@ What would be the impact of increasing the size of a key item identifier field (
 Draw the full include tree for MMP193.cbl showing every copybook it depends on, directly or transitively.
 ```
 
----
+![Alt text describing the image](./images/05-14.png)
 
-### Exercise 4: Business Logic Explanation
-
-Use Bob to explain what programs actually do in plain English — translating decades of COBOL into readable business logic.
-
-> Ensure you are in **Z Architect** mode
-
-**1. Explain a program end-to-end**
-
-```
-Explain MMP193.cbl in plain English. What does it do, what business process does it support, what data does it read and write, and what are the key decision points in the logic?
-```
-
-**2. Summarize a program family**
-
-```
-The KMS* programs appear to be related. Analyze all KMS programs in the workspace and explain what business function this program family supports, how they relate to each other, and what data they share.
-```
 
 ---
 
@@ -166,9 +177,13 @@ The **Generate Program Documentation** workflow produces structured, comprehensi
 
 > Ensure you are in **Z Architect** mode
 
+![Alt text describing the image](./images/05-01.png)
+
 #### Actions
 
 1. Select the **Workflows** icon.
+
+![Alt text describing the image](./images/05-99.png)
 
 2. Select the workflow titled **Generate program documentation**. You can use the dropdown to review what the workflow is used for.
 
@@ -176,9 +191,18 @@ The **Generate Program Documentation** workflow produces structured, comprehensi
 
    **ACTION:** Select **Browse Files → Use Case 1 & 4 → MMP193.cbl → select file → Continue with selection**.
 
+![Alt text describing the image](./images/05-15.png)   
+
+![Alt text describing the image](./images/05-16.png)
+
 4. Approve any tool requests that appear as Bob reads the source file, queries the metadata database, and assembles the documentation.
 
-5. When complete, a documentation file will be written to your workspace. Open it and review the generated content.
+
+
+5. When complete, a documentation file will be written to your workspace. Open it and review the generated content by clicking the preview icon in the top right corner of the preview (magnifying glass).
+
+![Alt text describing the image](./images/05-23.png)
+
 
 > **Tip:** Try running the workflow again on a different program — for example `KMS150.cbl` — to compare the depth of documentation produced for programs of different complexity.
 
@@ -196,9 +220,13 @@ The **Extract Business Rules** workflow goes beyond a conversational summary. It
 
 > Ensure you are in **Z Architect** mode
 
+![Alt text describing the image](./images/05-01.png)
+
 #### Actions
 
 1. Select the **Workflows** icon.
+
+![Alt text describing the image](./images/05-99.png)
 
 2. Select the workflow titled **Extract business rules**. You can use the dropdown to review what the workflow is used for.
 
@@ -206,9 +234,15 @@ The **Extract Business Rules** workflow goes beyond a conversational summary. It
 
    **ACTION:** Select **Browse Files → Use Case 1 & 4 → KMS150.cbl → select file → Continue with selection**.
 
+![Alt text describing the image](./images/05-25.png)
+
+![Alt text describing the image](./images/05-26.png)
+
 4. Approve any tool requests that appear as Bob analyzes the program logic.
 
-5. When complete, review the extracted business rules. Each rule will include the business area it belongs to, a plain-English description, and a reference to the relevant paragraph or section in the source code.
+5. When complete, review the extracted business rules by opening the generated file and selecting the preview option (magnifying glass). Each rule will include the business area it belongs to, a plain-English description, and a reference to the relevant paragraph or section in the source code.
+
+![Alt text describing the image](./images/05.30.png)
 
 > **Tip:** After reviewing the output, try a follow-up prompt in the same chat:
 > ```
@@ -229,11 +263,15 @@ Cyclomatic complexity measures the number of independent paths through a program
 
 > Ensure you are in **Z Architect** mode
 
+![Alt text describing the image](./images/05-01.png)
+
 **1. Application-wide complexity ranking**
 
 ```
 Rank all programs in the workspace by cyclomatic complexity. Show the top 10 most complex programs and for each one, name the paragraph that contributes most to the complexity score.
 ```
+
+![Alt text describing the image](./images/05-31.png)
 
 **2. Technical debt assessment**
 
@@ -241,11 +279,15 @@ Rank all programs in the workspace by cyclomatic complexity. Show the top 10 mos
 For the top 5 most complex programs, produce a technical debt assessment. For each program, identify: dead paragraphs (never PERFORMed), unused Working-Storage variables, and any copybooks included but not referenced in the Procedure Division. Summarize the debt findings per program.
 ```
 
+![Alt text describing the image](./images/05-32.png)
+
 **3. Modernization priority ranking**
 
 ```
 Based on complexity, dead code, and DB2 access patterns, which 3 programs in the workspace should be prioritized for modernization first? For each one, explain why and suggest the most impactful first step.
 ```
+
+![Alt text describing the image](./images/05-33.png)
 
 ---
 
